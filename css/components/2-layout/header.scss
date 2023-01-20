@@ -1,0 +1,222 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: rgba(35, 37, 57, 0.5);
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation-name: sticky;
+    animation-duration: 0.4s;
+  }
+  &__inner {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-side {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > .nav__inner-buttons {
+        display: none;
+      }
+    }
+    &-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 122px;
+      position: relative;
+      z-index: 11;
+      img {
+        width: 100%;
+      }
+    }
+
+    .burger {
+      display: none;
+    }
+  }
+}
+
+// 1250px
+@mixin header-xlg-xxlg-extra {
+  .header {
+    &__inner {
+      &-logo {
+        width: 90px;
+      }
+    }
+  }
+}
+// 1024px
+@mixin header-lg-xlg {
+  .header {
+    &__inner {
+      padding: 28px 0;
+      min-height: 114px;
+
+      position: relative;
+      &-side {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        & > .nav__inner-buttons {
+          display: flex;
+        }
+      }
+      &-logo {
+        width: 75px;
+        margin-right: 0 !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .burger {
+        display: block;
+        cursor: pointer;
+        @include transition;
+        position: relative;
+        width: 30px;
+        height: 36px;
+        z-index: 10;
+        &:hover {
+          opacity: 0.8;
+        }
+        &::before {
+          top: 20%;
+          width: 100%;
+          height: 3px;
+          background-color: $white;
+          transition: all 0.3s ease;
+          content: "";
+          position: absolute;
+          left: 50%;
+          @include transformX;
+        }
+        span {
+          top: 50%;
+          width: 100%;
+          height: 3px;
+          background-color: $white;
+          transition: all 0.3s ease;
+          position: absolute;
+          left: 50%;
+          @include transform;
+          @include transition;
+        }
+        &::after {
+          bottom: 20%;
+          width: 100%;
+          height: 3px;
+          background-color: $white;
+          transition: all 0.3s ease;
+          content: "";
+          position: absolute;
+          left: 50%;
+          @include transformX;
+        }
+        &.active {
+          &::before {
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          span {
+            opacity: 0;
+          }
+          &::after {
+            bottom: 50%;
+            -webkit-transform: translate(-50%, 50%) rotate(-45deg);
+            transform: translate(-50%, 50%) rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}
+// 650px
+@mixin header-sm-md-extra {
+  .header {
+    &__inner {
+      &-side {
+        & > .nav__inner-buttons {
+          .button {
+            display: none;
+            &.connect {
+              display: flex;
+            }
+          }
+        }
+      }
+      &-logo {
+      }
+      .burger {
+        width: 28px;
+        height: 34px;
+      }
+    }
+  }
+}
+// 540px
+@mixin header-xsm-sm {
+  .header {
+    &__inner {
+      &-side {
+        & > .nav__inner-buttons {
+          .button {
+            display: none;
+            &.connect {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// 440px
+@mixin header-xxsm-xsm {
+  .header {
+    &__inner {
+      &-side {
+        & > .nav__inner-buttons {
+          .button {
+            display: none;
+          }
+        }
+      }
+      .burger {
+        width: 26px;
+        height: 30px;
+        span {
+          height: 3px;
+        }
+        &::before {
+          height: 3px;
+        }
+        &:after {
+          height: 3px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes sticky {
+  0% {
+    top: -60px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}

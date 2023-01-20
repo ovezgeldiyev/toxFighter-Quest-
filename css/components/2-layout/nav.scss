@@ -1,0 +1,150 @@
+.nav {
+    width: 75%;
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a{
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 700;
+            margin-right: 32px;
+            opacity: 0.5;
+            text-transform: uppercase;
+            font-family: $inter;
+            transition: .2s linear;
+            &:last-child{
+                margin: 0;
+            }  
+            &.active{
+                opacity: 1;
+            } 
+            &:hover{
+                opacity: 1;
+            } 
+        }
+        &-links{
+            display: flex;
+            align-items: center;
+        }
+        &-buttons {
+            display: flex;
+            justify-content: space-between;
+            a{
+                opacity: 1;
+            }
+     
+          }
+    }
+}
+// 1380px
+@mixin nav-xxxlg-xxxxlg{
+    .nav{
+        width: 78%;
+    }
+}
+// 1250px
+@mixin nav-xlg-xxlg-extra{
+    .nav{
+        &__inner{
+            a{
+                font-size: 15px;
+                line-height: 15px;
+                margin-right: 28px;
+            }
+        }
+    }
+}   
+// 1180px
+@mixin nav-xlg-xxlg{
+    .nav{
+        width: 80%;
+        &__inner{
+            a{
+                font-size: 14px;
+                line-height: 14px;
+                margin-right: 22px;
+            }
+        }
+    }
+
+}
+// 1024px
+@mixin nav-lg-xlg {
+    body.active {
+        overflow: hidden;
+    }
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        background: rgba($color: #000000, $alpha: 0.1);
+        transform: translateX(-100%);
+        @include transition;
+        &.active {
+            transform: translateX(0);
+        }
+        &__inner {
+            flex-direction: column;
+            position: absolute;
+            justify-content: unset;
+            align-items: flex-start;
+            box-sizing: border-box;
+            top: 0;
+            left: 0;
+            width: 340px;
+            z-index: 1;
+            padding: 113px 25px 25px 25px;
+            height: 100%;
+            overflow-y: auto;
+            background: rgba(24, 24, 24, 0.5);
+            backdrop-filter: blur(125px);
+            &-links{
+                flex-direction: column;
+                margin-bottom: 24px;
+                align-items: flex-start;
+                a{
+                    font-family: $montserrat;
+                    margin: 0 0 16px 0;
+                    font-size: 23px;
+                    line-height: 30px;
+                    font-weight: 500;
+                }
+            }
+            &-buttons {
+                &.sm {
+                    .button {
+                        padding: 13px 18px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        line-height: 15px;
+                        &.secondary {
+                            margin-right: 8px;
+                            border: 1px solid #695BBF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// 750px
+@mixin nav-sm-md{
+    .nav{
+        &__inner {
+            width: 314px;
+            padding: 113px 16px 25px 16px;
+        }
+    }
+}
+// 650px
+@mixin nav-sm-md-extra{
+    .nav{
+
+    }
+}
+
+
